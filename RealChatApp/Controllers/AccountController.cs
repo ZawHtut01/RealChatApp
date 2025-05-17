@@ -85,20 +85,6 @@ namespace RealChatApp.Controllers
             ModelState.AddModelError("", "Invalid username or password");
             return View();
         }
-
-        //[HttpPost]
-        //public IActionResult Login(string Username, string Password)
-        //{
-        //    var user = _context.Users.FirstOrDefault(u => u.Username == Username && u.Password == Password);
-        //    if (user != null)
-        //    {
-        //        HttpContext.Session.SetInt32("UserId", user.Id);
-        //        return RedirectToAction("Index", "Chat");
-        //    }
-        //    ModelState.AddModelError("", "Invalid username or password");
-        //    return View();
-        //}
-
         public IActionResult Logout()
         {
             HttpContext.Session.Clear();
