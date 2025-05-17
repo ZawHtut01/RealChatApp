@@ -4,14 +4,74 @@
     var currentUserId = ViewBag.CurrentUserId;
 }
 
-<h2>Welcome to the Chat</h2>
-<div class="list-group">
-    @foreach (var user in Model)
-    {
-        <a class="list-group-item list-group-item-action d-flex align-items-center"
-           asp-controller="Chat" asp-action="ChatWith" asp-route-receiverId="@user.Id">
-            <img src="@user.ProfileImagePath" class="rounded-circle" style="width: 40px; height: 40px; object-fit: cover;" />
-            <span class="ms-3">@user.Username</span>
-        </a>
+<style>
+    .chat-card {
+        max-width: 600px;
+        margin: auto;
+        margin-top: 2rem;
+        box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+        border: none;
+        border-radius: 1rem;
     }
+
+    .chat-user {
+        transition: background-color 0.2s ease-in-out;
+        border-bottom: 1px solid #eee;
+        padding: 0.75rem 1rem;
+    }
+
+        .chat-user:hover {
+            background-color: #f1f1f1;
+            text-decoration: none;
+        }
+
+        .chat-user:last-child {
+            border-bottom: none;
+        }
+
+    .user-img {
+        width: 45px;
+        height: 45px;
+        object-fit: cover;
+        border-radius: 50%;
+        border: 2px solid #ccc;
+    }
+
+    .username {
+        font-weight: 500;
+        margin-left: 1rem;
+        color: #333;
+    }
+
+    .chat-user {
+        text-decoration: none !important;
+        color: inherit;
+    }
+
+       .chat-user .username {
+            text-decoration: none;
+            color: #333; /* or any color you like */
+        }
+
+
+</style>
+
+<div class="card chat-card">
+    <div class="card-header bg-primary text-white text-center py-3">
+        <h4 class="mb-0">Welcome to Chat</h4>
+    </div>
+    <div class="list-group list-group-flush">
+        @foreach (var user in Model)
+        {
+            if (user.Id != currentUserId) 
+            {
+                <a asp-controller="Chat" asp-action="ChatWith" asp-route-receiverId="@user.Id"
+                   class="chat-user d-flex align-items-center list-group-item-action">
+                    <img src="@user.ProfileImagePath" class="user-img" />
+
+                    <span class="username">@user.Username</span>
+                </a>
+            }
+        }
+    </div>
 </div>
