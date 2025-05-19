@@ -3,15 +3,58 @@
     Layout = "_Layout";
 }
 
-<h2>Login</h2>
-<form asp-action="Login" method="post">
-    <div class="form-group">
-        <label>Username</label>
-        <input type="text" name="Username" class="form-control" required />
-    </div>
-    <div class="form-group">
-        <label>Password</label>
-        <input type="password" name="Password" class="form-control" required />
-    </div>
-    <button type="submit" class="btn btn-success mt-2">Login</button>
-</form>
+<style>
+    .login-container {
+        max-width: 400px;
+        margin: 5rem auto;
+        padding: 2rem;
+        background-color: #ffffff;
+        border-radius: 1rem;
+        box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+    }
+
+    .login-title {
+        text-align: center;
+        margin-bottom: 2rem;
+        font-weight: 600;
+        color: #343a40;
+    }
+
+    .form-label {
+        font-weight: 500;
+    }
+
+    .btn-login {
+        width: 100%;
+        font-weight: 500;
+        padding: 0.6rem;
+    }
+
+    media (max-width: 576px) {
+        .login-container
+
+    {
+        margin: 2rem 1rem;
+        padding: 1.5rem;
+    }
+
+    }
+</style>
+
+<div class="login-container">
+    <h2 class="login-title">🔐 Login</h2>
+
+    <form asp-action="Login" method="post">
+        <div class="mb-3">
+            <label class="form-label">Username</label>
+            <input type="text" name="Username" class="form-control" required placeholder="Enter your username" />
+        </div>
+
+        <div class="mb-3">
+            <label class="form-label">Password</label>
+            <input type="password" name="Password" class="form-control" required placeholder="Enter your password" />
+        </div>
+
+        <button type="submit" class="btn btn-success btn-login">Login</button>
+    </form>
+</div>
